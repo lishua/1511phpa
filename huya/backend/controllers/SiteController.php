@@ -7,6 +7,9 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 use yii\db\query;
+use yii\data\Pagination;
+use app\models\UserList;
+use app\models\Zblist;
 /**
  * Site controller
  */
@@ -25,15 +28,16 @@ public $enableCsrfValidation = false;
         return $this->render('index',['user'=>$user['username']]);
     }
 
-    public function actionZb_list()
-    {
-        $query = new Query();
-        $list = $query->select('*')
-                ->from('zb_list')
-                ->all();
-        return $this->render('zb_list',['list'=>$list]);
-    }
+    // public function actionZb_list()
+    // {
+    //     $query = new Query();
+    //     $list = $query->select('*')
+    //             ->from('zb_list')
+    //             ->all();
+    //     return $this->render('zb_list',['list'=>$list]);
+    // }
 
+    //添加主播
     public function actionZb_add()
     {
         $query = new Query();
@@ -42,6 +46,19 @@ public $enableCsrfValidation = false;
                 ->all();
         return $this->render('zb_add',['user'=>$user]);
     }
+
+    //主播列表  分页
+    public function actionZb_list()
+    {
+        $sql = Zblist::find();
+        $pages = new Pagination(['totalCount' =>$sql->count(), 'pageSize' => '3']);
+        $list = $sql->offset($pages->offset)->limit($pages->limit)->asArray()->all();
+           return $this->render('Zb_list',[
+                 'list' => $list,
+                 'pages' => $pages,
+           ]);       
+    }
+
     public function actionZb_adddo()
     {
         //echo 123;die;
@@ -117,5 +134,28 @@ public $enableCsrfValidation = false;
         }
         return $str;
    }
+   //用户管里
+   public function actionUser_list()
+   {
+       $data = UserList::find();
+       $pages = new Pagination(['totalCount' =>$data->count(), 'pageSize' => '5']);
+       $list = $data->offset($pages->offset)->limit($pages->limit)->all();
+       
+       return $this->render('user_list',[
+             'list' => $list,
+             'pages' => $pages,
+       ]);
+    }
+
+   public function actionUser_del()
+   {
+        $id = Yii::$app->request->get('id');//接收页面提交要删除的id
+        // var_dump($id);die;
+        $db = Yii::$app->db;
+        $sql= "delete from user_list where id = $id";//查询表中对应要的id
+        $arr= $db->createCommand($sql)->execute();//执行
+        return $this->redirect('index.php?r=site/user_list');//删除后返回展示页面查看
+   }
+   
 
 }

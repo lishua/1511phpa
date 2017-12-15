@@ -166,13 +166,6 @@ use yii\helpers\Url;
                                 </li>
 
                                 <li>
-                                    <a href="refresh.html">
-                                        <i class="icon-double-angle-right"></i>
-                                        刷新记录
-                                    </a>
-                                </li>
-
-                                <li>
                                     <a href="#" class="dropdown-toggle">
                                         <i class="icon-double-angle-right"></i>
 
@@ -199,6 +192,82 @@ use yii\helpers\Url;
                                 </li>
                             </ul>
                         </li>
+
+
+
+
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-desktop"></i>
+                                <span class="menu-text"> 用户管理 </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+
+                            <ul class="submenu">
+
+                                <li>
+                                    <a href="<?= Url::toRoute(['site/user_list']); ?>">
+                                        <i class="icon-double-angle-right"></i>
+                                        用户列表
+                                    </a>
+                                </li>
+
+<!--                                 <li>
+                                    <a href="#" class="dropdown-toggle">
+                                        <i class="icon-double-angle-right"></i>
+
+                                        账号设置
+                                        <b class="arrow icon-angle-down"></b>
+                                    </a> -->
+
+                            <!--         <ul class="submenu">
+                                        <li>
+                                            <a href="account.html">
+                                                <i class="icon-leaf"></i>
+                                                账号记录
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="addaccount.html">
+                                                <i class="icon-leaf"></i>
+                                                添加账号
+                                            </a>
+                                        </li>
+
+                                    </ul> -->
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-list"></i>
+                                <span class="menu-text"> 礼物管理 </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="<?= Url::toRoute(['admin/gife']); ?>">
+                                        <i class="icon-double-angle-right"></i>
+                                        礼物列表
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="<?= Url::toRoute(['admin/recharge']); ?>">
+                                        <i class="icon-double-angle-right"></i>
+                                        添加礼物
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+
 
                         <li>
                             <a href="#" class="dropdown-toggle">

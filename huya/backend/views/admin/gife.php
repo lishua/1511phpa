@@ -3,16 +3,7 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use yii\widgets\LinkPager;
 ?>
-<style>
-	td{
-		text-align: center;
-		font-size: 18px;
-	}
-	th{
-		text-align: center;
-	}
-</style>
-				<div class="main-content">
+<div class="main-content">
 					<div class="breadcrumbs" id="breadcrumbs">
 						<script type="text/javascript">
 							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
@@ -23,8 +14,8 @@ use yii\widgets\LinkPager;
 								<i class="icon-home home-icon"></i>
 								<a href="#">首页</a>
 							</li>
-							<li class="active">账户管理</li>
-                            <li class="active">主播列表</li>
+							<li class="active">账号管理</li>
+                            <li class="active">余额充值</li>
 						</ul><!-- .breadcrumb -->
 					</div>
 
@@ -43,32 +34,25 @@ use yii\widgets\LinkPager;
 																<span class="lbl"></span>
 															</label>
 														</th>
-														<th>编号</th>
-														<th>主播名称</th>
-														<th>主播房间号</th>
+														
+														<th>礼物名称</th>
+														<th>礼物图片</th>
+														<th>礼物明细</th>
+														<th>礼物价格</th>
 														<th>操作</th>
 													</tr>
 												</thead>
 
 												<tbody>
-													<?php foreach ($list as $key => $value) { ?>
-													<tr>
-														<td class="center">
-															<label>
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td><?=$value['id'] ?> </td>
-														<td><?=$value['zb_name'] ?></td>
-														<td><?=$value['room_num'] ?></td>
-														<td style="text-align: center; width:150px;">
-											                <a href=""><button class="btn">编辑<tton></a>
-											                <a href=""><button class="btn btn-danger">删除<tton></a>
-											            </td>
-														<!-- <td style="color:red;">交易失败</td> -->
-													</tr>
+													<?php foreach ($data as $key => $val) { ?>
+												<tr>
+													<td><?= $val['id']?></td>
+													<td><?= $val['name']?></td>
+													<td><img src="<?= $val['img']?>" alt="" width="77" height="100" ></td>
+													<td><?= $val['content']?></td>
+													<td><?= $val['price']?></td>
+													<td><a href="<?= Url::toRoute(['admin/gife_del','id'=>$val['id']])?>">删除</a></td>
+												</tr>
 												<?php } ?>
 												</tbody>
 											</table>
@@ -77,4 +61,3 @@ use yii\widgets\LinkPager;
 									</div><!-- /span -->
 								</div><!-- /row -->
 					</div><!-- /.page-content -->
-				</div><!-- /.main-content -->

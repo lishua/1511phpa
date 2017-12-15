@@ -24,7 +24,7 @@ use yii\widgets\LinkPager;
 								<a href="#">首页</a>
 							</li>
 							<li class="active">账户管理</li>
-                            <li class="active">主播列表</li>
+                            <li class="active">用户列表</li>
 						</ul><!-- .breadcrumb -->
 					</div>
 
@@ -44,8 +44,9 @@ use yii\widgets\LinkPager;
 															</label>
 														</th>
 														<th>编号</th>
-														<th>主播名称</th>
-														<th>主播房间号</th>
+														<th>用户名称</th>
+														<th>用户性别</th>
+														<th>注册时间</th>
 														<th>操作</th>
 													</tr>
 												</thead>
@@ -61,18 +62,19 @@ use yii\widgets\LinkPager;
 														</td>
 
 														<td><?=$value['id'] ?> </td>
-														<td><?=$value['zb_name'] ?></td>
-														<td><?=$value['room_num'] ?></td>
+														<td><?=$value['name'] ?></td>
+														<td><?=$value['sex'] ?></td>
+														<td><?=$value['time'] ?></td>
 														<td style="text-align: center; width:150px;">
-											                <a href=""><button class="btn">编辑<tton></a>
-											                <a href=""><button class="btn btn-danger">删除<tton></a>
+											                <a href="<?= Url::toRoute(['site/user_del','id'=>$value['id']])?>"><button class="btn">删除<tton></a>
+											                <a href=""><button class="btn btn-danger">修改<tton></a>
 											            </td>
 														<!-- <td style="color:red;">交易失败</td> -->
 													</tr>
 												<?php } ?>
 												</tbody>
 											</table>
-											<center><?= LinkPager::widget(['pagination' => $pages]); ?></center>
+											  <center><?= LinkPager::widget(['pagination' => $pages]); ?></center>
 										</div><!-- /.table-responsive -->
 									</div><!-- /span -->
 								</div><!-- /row -->
